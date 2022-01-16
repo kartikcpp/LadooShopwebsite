@@ -49,3 +49,22 @@ export const categories = [
     },
   
 ];
+export const popularProducts = [
+  {
+    id: 1,
+    image: "https://ik.imgkit.net/ikmedia/bucket.png",
+  },
+  {
+    id: 2,
+    image: "https://ik.imgkit.net/ikmedia/bucket.png",
+  },
+  {
+    id: 3,
+    image: "https://ik.imgkit.net/ikmedia/bucket.png",
+  },
+  {
+    id: 4,
+    image: "https://ik.imgkit.net/ikmedia/bucket.png",
+    },
+  
+];
