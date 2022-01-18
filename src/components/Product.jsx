@@ -3,6 +3,7 @@ import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import React from "react";
 import styled from "styled-components";
 import Heart from "@mui/icons-material/FavoriteBorder";
+import { Link } from "react-router-dom";
 
 const Icon = styled.div`
   width: 40px;
@@ -48,19 +49,24 @@ position: relative;
 
 `
 const Image = styled.img`
-height:100%;`;
+height:100%;
+width:100%;
+object-fit:cover`;
 function Product({ item }) {
   return (
     <div>
       <Container>
-              <Image src={item.image}/>
+              <Image src={item.img}/>
         <Info>
           <Icon>
             <ShoppingCart />
           </Icon>
+          <Link to={`/product/${item._id}`}>
+            
           <Icon>
             <Search />
           </Icon>
+          </Link>
           <Icon>
             <Heart />
           </Icon>

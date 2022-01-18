@@ -13,13 +13,12 @@ const Container=styled.div`
 
 function Announcement() {
     return (
-        <div>
+        
             <Container>
-                Announce
+                Announcement flat 40% OFF!!!!!!!!!!!
             </Container>
             
-        </div>
-    )
+        )
 }
 
 export default Announcement

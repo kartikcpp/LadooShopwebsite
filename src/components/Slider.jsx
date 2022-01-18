@@ -2,13 +2,20 @@ import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import styled from "styled-components";
-import { sliderItems } from "../data";
+
+import { useState,useEffect } from "react";
+import { publicRequest } from "../requestMethod";
+import { Link } from "react-router-dom";
 const Container = styled.div`
+padding-top: 40px;
   width: 100%;
   height: 100vh;
   display: flex;
   position: relative;
   overflow: hidden;
+  @media (max-width: 380px) {
+  display: none;
+  }
 `;
 const Wrapper = styled.div`
   height: 100%;
@@ -62,6 +69,20 @@ const Button = styled.button`
   background-color: transparent;
 `;
 function Slider() {
+
+const [sliderItems, setsliderProducts] = useState([]);
+useEffect(() => {
+  const getProducts = async () => {
+    try {
+      const res = await publicRequest.get("products");
+      console.log(res.data);
+      setsliderProducts(res.data);
+    } catch (error) {}
+  };
+  getProducts();
+  return () => {};
+}, []);
+
   const [slideIndex, setSlideIndex] = React.useState(0);
     const handleClick = (direction) => {
       
@@ -86,13 +107,15 @@ function Slider() {
         <Wrapper slideindex={slideIndex}>
           {sliderItems.map((item) => {
             return (
-              <Slide key={item.id}>
+              <Slide key={item._id}>
                 <ImgContainer>
                   <Img src={item.img} />
                 </ImgContainer>
                 <InfoContainer>
                   <Title>{item.title}</Title>
+                  <Link to={'/product/'+item._id}>
                   <Button>Buy NOW</Button>
+                  </Link>
                 </InfoContainer>
               </Slide>
             );
